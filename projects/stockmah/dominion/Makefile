@@ -1,4 +1,4 @@
-CFLAGS = -Wall -fpic -coverage -lm -g
+CFLAGS = -Wall -fpic -coverage -lm -g -std=c99
 LINK = gcc -o $@ $^ $(CFLAGS)
 
 %.o: %.c
@@ -37,17 +37,17 @@ runtests: testDrawCard
 
 runrandomtestcard1: randomtestcard1
 	./randomtestcard1 &> randomtestcard1.out || true
-	gcov dominion.c >> randomtestcard1.out
+	gcov dominion.c -fb >> randomtestcard1.out
 	cat dominion.c.gcov >> randomtestcard1.out
 
 runrandomtestcard2: randomtestcard2
 	./randomtestcard2 &>> randomtestcard2.out || true
-	gcov dominion.c >> randomtestcard2.out
+	gcov dominion.c -fb >> randomtestcard2.out
 	cat dominion.c.gcov >> randomtestcard2.out
 
 runrandomtestadventurer: randomtestadventurer
 	./randomtestadventurer &>> randomtestadventurer.out || true
-	gcov dominion.c >> randomtestadventurer.out
+	gcov dominion.c -fb >> randomtestadventurer.out
 	cat dominion.c.gcov >> randomtestadventurer.out
 
 randomtestcard1.o: dominion.h rngs.h

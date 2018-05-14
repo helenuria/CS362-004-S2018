@@ -74,19 +74,7 @@ int checkAdventurer(struct gameState *post, int handPos, int player) {
 
 void __gcov_flush(void);
 
-void handler(int a, siginfo_t* b, void* c) {
-	printf("Segmentation fault\n");
-	__gcov_flush();
-	abort();
-}
-
 int main() {
-	struct sigaction act;
-	memset(&act, 0, sizeof(struct sigaction));
-	act.sa_flags = SA_SIGINFO;
-	act.sa_sigaction = handler;
-	sigaction(SIGSEGV, &act, NULL);	
-
 	struct{
 		int treasureType;
 		int treasureNum;
@@ -165,7 +153,7 @@ int main() {
 	int ret = 0;
 
 	for (size_t n = 0; n < sizeof(testTable) / sizeof(testTable[0]); n++) {
-		for(int i = 0; i < 2000; i++) {
+		for(int i = 0; i < 200; i++) {
 			for(size_t j = 0; j < sizeof(struct gameState); j++) {
 				((char*)G)[j] = floor(Random() * 256);
 			}
