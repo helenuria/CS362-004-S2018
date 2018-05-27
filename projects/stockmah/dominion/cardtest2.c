@@ -26,7 +26,7 @@ int main() {
 	printf("When the deck has at least 2 treasure cards...\n");
 	memset(&G, 23, sizeof(struct gameState));
 	initializeGame(2, k, seed, &G);
-	setDeck(copper, 2, province, &G);
+	setDeck(copper, 2, province, 0, &G);
 	setHand(adventurer, 1, province, &G);
 
 	int initTreasureCount = handCount(0, copper, &G);
@@ -58,7 +58,7 @@ int main() {
 	printf("When the full deck (including discard) has only 1 treasure card...\n");
 	memset(&G, 23, sizeof(struct gameState));
 	initializeGame(2, k, seed, &G);
-	setDeck(copper, 1, province, &G);
+	setDeck(copper, 1, province, 0, &G);
 	setHand(adventurer, 1, province, &G);
 
 	initTreasureCount = handCount(0, copper, &G);
@@ -90,7 +90,7 @@ int main() {
 	printf("When the full deck (including discard) has no treasure cards...\n");
 	memset(&G, 23, sizeof(struct gameState));
 	initializeGame(2, k, seed, &G);
-	setDeck(copper, 0, province, &G);
+	setDeck(copper, 0, province, 0, &G);
 	setHand(adventurer, 1, province, &G);
 
 	initTreasureCount = handCount(0, copper, &G);

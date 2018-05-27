@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "rngs.h"
 
-void setDeck(int card1, int card1Count, int card2, struct gameState *G);
+int setDeck(int card1, int card1Count, int card2, int player, struct gameState *G);
 
 void setHand(int card1, int card1Count, int card2, struct gameState *G);
 

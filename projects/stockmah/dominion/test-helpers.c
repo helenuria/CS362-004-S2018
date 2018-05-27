@@ -5,15 +5,6 @@
 #include <stdio.h>
 #include "rngs.h"
 
-void setDeck(int card1, int card1Count, int card2, struct gameState *G) {
-		for (int j = 0; j < card1Count; j++) {
-			G->deck[0][j] = card1;
-		}
-		for (int k = card1Count; k < G->deckCount[0]; k++) {
-			G->deck[0][k] = card2;
-		}
-}
-
 void setHand(int card1, int card1Count, int card2, struct gameState *G) {
 		for (int j = 0; j < card1Count; j++) {
 			G->hand[0][j] = card1;
@@ -32,6 +23,22 @@ void setDiscard(int card1, int card1Count, int card2, struct gameState *G) {
 		}
 }
 
+int setDeck(int card1, int card1Count, int card2, int player, struct gameState *G) {
+	if (G->deckCount[player] >= card1Count) {
+		for (int j = 0; j < card1Count; j++) {
+			G->deck[player][j] = card1;
+		}
+		for (int k = card1Count; k < G->deckCount[player]; k++) {
+			G->deck[player][k] = card2;
+		}
+
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+
 int deckCount(int player, int card, struct gameState *state) {
 	int i;
 	int count = 0;
@@ -43,6 +50,7 @@ int deckCount(int player, int card, struct gameState *state) {
 
 	return count;
 }
+
 int handCount(int player, int card, struct gameState *state) {
 	int i;
 	int count = 0;
@@ -54,6 +62,7 @@ int handCount(int player, int card, struct gameState *state) {
 
 	return count;
 }
+
 int discardCount(int player, int card, struct gameState *state) {
 	int i;
 	int count = 0;
