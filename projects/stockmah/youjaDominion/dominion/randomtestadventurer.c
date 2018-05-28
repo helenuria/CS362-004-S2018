@@ -146,7 +146,7 @@ int main() {
 	SelectStream(2);
 	PutSeed(3);
 	
-	printf("Testing Adventurer\n");
+	fprintf(stderr, "Testing Adventurer\n");
 
 	int passed = 0;
 	int failed = 0;
@@ -174,7 +174,7 @@ int main() {
 			if (setDeckRet == 0) {
 				ret = checkAdventurer(G, h, p);
 			} else {
-				printf("Failed to set deck\n");
+				fprintf(stderr, "Failed to set deck\n");
 				exit(1);
 			}
 
@@ -187,6 +187,6 @@ int main() {
 		}
 	}
 
-	printf("Tests Passed: %d\nTests Failed: %d\n\n", passed, failed);
+	fprintf(stderr, "Tests Passed: %d\nTests Failed: %d\n\n", passed, failed);
 	return 0;
 }
