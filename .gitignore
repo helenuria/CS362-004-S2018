@@ -1,0 +1,11 @@
+*
+!/**/
+!*.*
+*.gcno
+*.out
+*.gcda
+*.o
+.gradle
+build
+.metadata
+*.gcov
