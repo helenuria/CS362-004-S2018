@@ -75,15 +75,81 @@ public class UrlValidatorTest extends TestCase {
    
    public void testYourFirstPartition()
    {
-	 //You can use this function to implement your First Partition testing	   
+	 UrlValidator urlVal = new UrlValidator();
+
+	 // input is invalid
+	 
+	 // invalid scheme
+	 System.out.print("\nScheme is incorrect, expect false:\n");
+	 UrlValidatorTest(urlVal.isValid("http//testcase.com"), false);
+
+	 // invalid authourity
+	 System.out.print("\nAuthority is incorrect, expect false:\n");
+	 UrlValidatorTest(urlVal.isValid("www.test.case.com"), false);
+
+	 // invalid port
+	 System.out.print("\nPort is invalid, expect false:\n");
+	 UrlValidatorTest(urlVal.isValid("www.testcase.com:-5"), false);
+
+	 // invalid path
+	 System.out.print("\nPath is invalid, expect false:\n");
+	 UrlValidatorTest(urlVal.isValid("www.testcase.com/test//test"), false);
+
+	 // invaid query
+	 System.out.print("\nQuery is invalid, expect false:\n");
+	 UrlValidatorTest(urlVal.isValid("www.testcase.com??query"), false);
 
    }
    
    public void testYourSecondPartition(){
-		 //You can use this function to implement your Second Partition testing	   
+	   // input is null
+	   
+	   // null scheme
+	   System.out.print("\nNo scheme, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("www.testcase.com"), true);
+
+	   // null authourity
+	   System.out.print("\nNo authority, expect false:\n");
+	   UrlValidatorTest(urlVal.isValid("www..com"), false);
+
+	   // null port
+	   System.out.print("\nNo Port, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("www.testcase.com"), true);
+
+	   // null path
+	   System.out.print("\nNo Path, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("www.testcase.com"), true);
+	   
+	   // null query
+	   System.out.print("\nNo query, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("www.testcase.com"), true);
 
    }
-   //You need to create more test cases for your Partitions if you need to 
+
+   public void testYourThirdPartition(){
+	   // input is valid
+	   
+	   // valid scheme
+	   System.out.print("\nScheme is http, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("http://www.testcase.com"), true);
+	   
+	   // valid authourity
+	   System.out.print("\nAuthority is valid, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("www.testcase.com"), true);
+
+	   // valid port
+	   System.out.print("\nPort is valid, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("www.testcase.com:80"), true);
+
+	   // valid path
+	   System.out.print("\nPath is valid, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("www.testcase.com/test"), true);
+
+	   // valid query
+	   System.out.print("\nQuery is valid, expect true:\n");
+	   UrlValidatorTest(urlVal.isValid("www.testcase.com?test=true"), true);
+
+   }
    
    public void testIsValid()
    {
